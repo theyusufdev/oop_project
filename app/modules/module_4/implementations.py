@@ -34,3 +34,4 @@ class EgitimDestegi(SocialService):
 
     def destek_hesapla(self):
         return self.burs_miktari
+        print("Merhaba")
