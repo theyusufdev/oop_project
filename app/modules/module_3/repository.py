@@ -1,8 +1,7 @@
 import datetime
 
 class EmergencyRepository():
-    def __init__(self, emergency_unit):
-        self.emergency_unit = emergency_unit
+    def __init__(self):
         self.save_cases = {}
         self.old_cases = {}
         self.unit = {}
