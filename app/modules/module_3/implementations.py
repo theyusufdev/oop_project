@@ -1,5 +1,5 @@
 import time
-from app.modules.module_3.base import EmergencyUnit
+from .base import EmergencyUnit
 import numpy as np
 
 # Ambulans Birimi
@@ -49,28 +49,40 @@ class AmbulanceUnit(EmergencyUnit):
     def report_location(self):
         print(f"[KONUM] Ambulansın konumu: {self.current_location}")
 
-    # Araçtaki arızaları sisteme girmeye yarar
-    def report_fault(self, faulty_part=None, faulty_level=None):
-        critical_parts = ["motor", "tekerlek", "gövde", "navigasyon", "tıbbi cihaz"]
-        
-        # Parça ismini küçük harfe çevirip kritik parça listesinde olup olmadığını ve arıza seviyesini kontrol eder
-        # Eğer arıza kritik ise aracı hizmet dışına alır
-        # Arıza hafif ise uyarı yapar ama aracı hizmet dışına almaz 
-        if faulty_part and faulty_part.lower() in critical_parts and faulty_level == 2:
-            self.is_broken = True
-            print(f"[ARIZA] Kritik Arıza: {faulty_part}! Araç hizmet dışı")
-        
-        elif faulty_part and faulty_part.lower() in critical_parts and faulty_level == 1:
-            print(f"[ARIZA] Hafif Arıza: {faulty_part}. Göreve devam edebilir")
-            self.is_broken = False 
+    # Araca ait kaza raporu ve protokol yönetimi
+    def report_accident(self, severity_level=None):
+        print("\n" + "="*45)
+        print(" [DİKKAT] ARAÇ KAZA YAPTI - PROTOKOL UYGULANIYOR")
+        print("="*45)
 
-        # Herhangi bir arıza girilmemişse aracı sağlam olarak işaretler
-        elif faulty_part is None and faulty_level is None:
-            self.is_broken = False
-            print("[ARIZA] Arıza yok araç sağlam")
+        # Kaza anında yapılması gereken standart adımlar
+        protocol_steps = [
+            "1. [İŞARET] Dubalarla yolu daralt, trafiği yavaşlat.",
+            "2. [YARDIM] Yaralı varsa 112'ye haber ver, araçtan çıkarma.",
+            "3. [TUTANAK] Kaza krokisini çiz ve tutanak tut."
+        ]
+
+        for step in protocol_steps:
+            print(step)
+        
+        print("-" * 45)
+
+        # Şiddetli kaza durumu (Seviye 2)
+        if severity_level == 2:
+            self.is_broken = True
+            self.availability = False # Aracı tamamen görevlere kapatır
+            print(f"[KAZA] Kritik Hasar! Araç {self.unit_id} HİZMET DIŞI.")
+            print("[SİSTEM] Yedek ekip ve çekici yönlendiriliyor...")
+
+        # Hafif kaza durumu (Seviye 1)
+        elif severity_level == 1:
+            # Hafif kazada araç sağlam kabul edilebilir ancak kontrole alınmalıdır
+            self.is_broken = False 
+            print(f"[KAZA] Hafif Hasar. Araç {self.unit_id} görevine devam edebilir.")
+            print("[BİLGİ] Operasyon bitimi teknik kontrol gereklidir.")
 
         else:
-            print("[ARIZA] Tanımsız arıza durumu")
+            print("[HATA] Tanımsız kaza seviyesi. Lütfen (1) veya (2) giriniz.")
 
     # Arıza ile birlikte diğer tüm parametreleri değerlendirerek aracın müsaitliğini belirler
     def determine_availability(self):
@@ -191,30 +203,43 @@ class PoliceUnit(EmergencyUnit):
         # Mevcut konumu raporlar
         print(f"[KONUM] Polis aracının konumu: {self.current_location}")
 
-    # Araçtaki arızları yönetir
-    def report_fault(self, faulty_part=None, faulty_level=None):
-        critical_parts = ["motor", "tekerlek", "gövde", "navigasyon", "tıbbi cihaz"]
-        
-        # Kritik parçalarda seviye 2 hasar varsa aracı bozuk işaretler 
-        if faulty_part and faulty_part.lower() in critical_parts and faulty_level == 2:
-            self.is_broken = True
-            print(f"[ARIZA] Kritik Arıza: {faulty_part}! Araç hizmet dışı")
-        
-        # Hafif hasarda sadece bilgi verir
-        elif faulty_part and faulty_part.lower() in critical_parts and faulty_level == 1:
-            print(f"[ARIZA] Hafif Arıza: {faulty_part}. Göreve devam edebilir")
-            self.is_broken = False
+   # Kaza yönetimi
+    def report_accident(self, severity_level=None):
+        print("\n" + "="*45)
+        print(" [DİKKAT] ARAÇ KAZA YAPTI - PROTOKOL UYGULANIYOR")
+        print("="*45)
 
-        # Arıza yoksa sağlam işaretler
-        elif faulty_part is None and faulty_level is None:
-            self.is_broken = False
-            print("[ARIZA] Arıza yok, araç sağlam")
+        # Kaza anında yapılması gereken standart adımlar
+        protocol_steps = [
+            "1. [İŞARET] Dubalarla yolu daralt, trafiği yavaşlat.",
+            "2. [YARDIM] Yaralı varsa 112'ye haber ver, araçtan çıkarma.",
+            "3. [TUTANAK] Kaza krokisini çiz ve tutanak tut."
+        ]
+
+        for step in protocol_steps:
+            print(step)
+        
+        print("-" * 45)
+
+        # Şiddetli kaza durumu (Seviye 2)
+        if severity_level == 2:
+            self.is_broken = True
+            self.availability = False # Aracı tamamen görevlere kapatır
+            print(f"[KAZA] Kritik Hasar! Araç {self.unit_id} HİZMET DIŞI.")
+            print("[SİSTEM] Yedek ekip ve çekici yönlendiriliyor...")
+
+        # Hafif kaza durumu (Seviye 1)
+        elif severity_level == 1:
+            # Hafif kazada araç sağlam kabul edilebilir ancak kontrole alınmalıdır
+            self.is_broken = False 
+            print(f"[KAZA] Hafif Hasar. Araç {self.unit_id} görevine devam edebilir.")
+            print("[BİLGİ] Operasyon bitimi teknik kontrol gereklidir.")
 
         else:
-            print("[ARIZA] Tanımsız arıza durumu")
+            print("[HATA] Tanımsız kaza seviyesi. Lütfen (1) veya (2) giriniz.")
+
 
     # Aracın genel durumuna bakarak müsaitliğini belirler.
-    # Personel, arıza, tutuklu gibi bir çok özelliği değerlendirir
     def determine_availability(self):
         if self.is_enough_staff == False or self.is_broken or self.prisoner_count > 0:
             self.availability = False
@@ -314,12 +339,13 @@ class FireFightingUnit(EmergencyUnit):
         
         super().__init__(unit_id, unit_type, current_location, availability, fuel_level, is_enough_staff, is_siren_on, is_it_on_duty, max_fuel_level = 85)
 
+        self.max_fuel_level = max_fuel_level
         self.__water_level = water_level
         self.__foam_level = foam_level
-        self.ladder_length = ladder_length
-        self.max_fuel_level = max_fuel_level
-        self.max_water_level = max_water_level
-        self.max_foam_level = max_foam_level
+        self.__ladder_length = ladder_length
+        self.__max_water_level = max_water_level
+        self.__max_foam_level = max_foam_level
+        self.__total_count = 0
 
         self.is_broken = False
         self.availability = True
@@ -340,6 +366,37 @@ class FireFightingUnit(EmergencyUnit):
     def water_level(self, new):
         self.__foam_level = new
 
+    @property
+    def ladder_length(self):
+        return self.__ladder_length
+    
+    @ladder_length.setter
+    def ladder_length(self, new):
+        self.__ladder_length = new
+
+    @property
+    def max_water_level(self):
+        return self.__max_water_level
+    
+    @max_water_level.setter
+    def water_level(self, new):
+        self.__max_water_level = new
+
+    @property
+    def max_foam_level(self):
+        return self.__max_foam_level
+    
+    @max_foam_level.setter
+    def max_foam_level(self, new):
+        self.__max_foam_level = new
+
+    @property
+    def total_count(self):
+        return self.__total_count
+    
+    @total_count.setter
+    def total_count(self, new):
+        self.__total_count = new
 
     def update_location(self, new_location):
         self.current_location = new_location
@@ -356,26 +413,40 @@ class FireFightingUnit(EmergencyUnit):
     def report_location(self):
         print(f"[KONUM] İtfaye aracının konumu: {self.current_location}")
 
-    def report_fault(self, faulty_part=None, faulty_level=None):
-        critical_parts = ["motor", "tekerlek", "gövde", "navigasyon", "merdiven", "pompa"]
-        
-        # Parça ismini küçük harfe çevirip kritik parça listesinde olup olmadığını kontrol eder
-        if faulty_part and faulty_part.lower() in critical_parts and faulty_level == 2:
-            self.is_broken = True
-            print(f"[ARIZA] Kritik Arıza: {faulty_part}! Araç hizmet dışı")
-        
-        # Hafif arıza (seviye 1) durumunda sadece bilgilendirme yapar, aracı durdurmaz
-        elif faulty_part and faulty_part.lower() in critical_parts and faulty_level == 1:
-            print(f"[ARIZA] Hafif Arıza: {faulty_part}. Göreve devam edebilir")
-            self.is_broken = False 
+    # Kaza yönetimi
+    def report_accident(self, severity_level=None):
+        print("\n" + "="*45)
+        print(" [DİKKAT] ARAÇ KAZA YAPTI - PROTOKOL UYGULANIYOR")
+        print("="*45)
 
-        # Herhangi bir arıza girilmemişse aracı sağlam olarak işaretler
-        elif faulty_part is None and faulty_level is None:
-            self.is_broken = False
-            print("[ARIZA] Arıza yok, araç sağlam")
+        # Kaza anında yapılması gereken standart adımlar
+        protocol_steps = [
+            "1. [İŞARET] Dubalarla yolu daralt, trafiği yavaşlat.",
+            "2. [YARDIM] Yaralı varsa 112'ye haber ver, araçtan çıkarma.",
+            "3. [TUTANAK] Kaza krokisini çiz ve tutanak tut."
+        ]
+
+        for step in protocol_steps:
+            print(step)
+        
+        print("-" * 45)
+
+        # Şiddetli kaza durumu (Seviye 2)
+        if severity_level == 2:
+            self.is_broken = True
+            self.availability = False # Aracı tamamen görevlere kapatır
+            print(f"[KAZA] Kritik Hasar! Araç {self.unit_id} HİZMET DIŞI.")
+            print("[SİSTEM] Yedek ekip ve çekici yönlendiriliyor...")
+
+        # Hafif kaza durumu (Seviye 1)
+        elif severity_level == 1:
+            # Hafif kazada araç sağlam kabul edilebilir ancak kontrole alınmalıdır
+            self.is_broken = False 
+            print(f"[KAZA] Hafif Hasar. Araç {self.unit_id} görevine devam edebilir.")
+            print("[BİLGİ] Operasyon bitimi teknik kontrol gereklidir.")
 
         else:
-            print("[ARIZA] Tanımsız arıza durumu")
+            print("[HATA] Tanımsız kaza seviyesi. Lütfen (1) veya (2) giriniz.")
 
     # Birçok parametreyi değerlendirerek aracın müsaitliğini belirler.
     def determine_availability(self):
@@ -437,3 +508,8 @@ Siren Durumu            : {"Açık" if self.is_siren_on else "Kapalı"}
 Görevde mi              : {"Evet" if self.is_it_on_duty else "Hayır"}
 --------------------------------------------------
 """
+    
+    @classmethod
+    def show_total_vehicle_size(cls):
+        return f"[SİSTEM] Şu an envanterde toplam {cls.total_fleet_count} adet itfaiye aracı kayıtlıdır"
+    

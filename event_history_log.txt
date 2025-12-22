@@ -119,3 +119,13 @@
 [22:55:15] Birim merkeze dönüyor.
  --------------------------------------------------
 [23:06:23] [BAKIM] 101 serviste bakımdan geçti
+[17:20:46] --- YENİ OPERASYON: Yangın | BİRİM: İtfaiye (ID: 301) ---
+[17:20:48] [BİLGİ] Plan oluşturuldu, müdahale başlıyor.
+[17:20:51] ADIM UYGULANDI: 1. [GÜVENLİK] Çevre güvenliğini al, elektrik/gaz akışını kes.
+[17:20:53] ADIM UYGULANDI: 2. [MÜDAHALE] Rüzgarı arkana al, alevin kaynağına su/köpük sık.
+[17:20:55] ADIM UYGULANDI: 3. [KONTROL] Soğutma çalışması yap ve termal kamerayla kontrol et.
+[17:20:57] [BİLGİ] Operasyon adımları tamamlandı.
+[17:20:59] [SONUÇ RAPORU] Yaralı: 0 | Vefat: 0
+[17:20:59] Birim merkeze dönüyor.
+ --------------------------------------------------
+[17:21:54] [BAKIM] 101 serviste bakımdan geçti

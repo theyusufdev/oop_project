@@ -1,9 +1,11 @@
 import os
+import random
 import time
 from turtle import clearscreen
 from app.modules.module_3.repository import EmergencyRepository
 from app.modules.module_3.services import EmergencyService
 from app.modules.module_3.implementations import AmbulanceUnit, PoliceUnit, FireFightingUnit
+from app.modules.module_3.base import EmergencyUnit
 
 def main():
     
@@ -40,14 +42,15 @@ def main():
     print("="*50 + "\n")
 
     while True:
-        print(f"Aktif Araç Sayısı: {len(units)}")
+        print(f"Sistemde kayıt olan araç sayısı: {EmergencyUnit.total_fleet_count}")
         print("-" * 40)
         print(" [1] 🆘  ACİL İHBAR GİRİŞİ (Vaka Oluştur)")
         print(" [2] 🚓  CANLI FİLO DURUMU (Listele)")
         print(" [3] 🛠️  ARAÇ YÖNETİMİ (Bakım/Statü Değiştir)")
         print(" [4] ➕  YENİ EKİP EKLE (Envantere Kayıt)")
         print(" [5] 🗑️  ARAÇ SİL (Envanterden Düş)")
-        print(" [6] 📂  LOG PANELİ")
+        print(" [6] 🚙  ARAÇ KAZASI BİLDİR (Acil Durum Araçlar)")
+        print(" [7] 📂  LOG PANELİ")
         print(" [Q] ❌  ÇIKIŞ")
         print("-" * 40)
         
@@ -61,8 +64,9 @@ def main():
             
             try:
                 severity = int(input("Ciddiyet Seviyesi (1-10): "))
+                case_location = random.randint(1, 100)
                 # Servis katmanını çağırır
-                service.creating_case(case_type, severity, units)
+                service.creating_case(case_type, severity, units, case_location)
                 
                 # İşlemi kaydeder
                 repo.save_unit_info(units) 
@@ -140,9 +144,42 @@ def main():
             input("\nDevam etmek için Enter'a basın...")
 
         # Sistem loglarını okuma
-        elif text == "6":
+        elif text == "7":
             service.event_log_management()
 
+        # Kaza yönetimi
+        elif text == "6":
+            print("\n" + "="*40)
+            print("   🚨 ARAÇ KAZA BİLDİRİM PANELİ 🚨")
+            
+            try:
+                target_id = int(input("👉 Kazaya karışan aracın ID'sini giriniz: "))
+                
+                # Listeden ilgili aracı buluyoruz
+                unit = next((u for u in units if u.unit_id == target_id), None)
+
+                if unit:
+                    print(f"\n[SİSTEM] {target_id} ID'li {unit.unit_type} birimi seçildi.")
+                    print("Kaza Şiddeti Seçiniz:")
+                    print(" (1) Hafif Hasar (Göreve devam edebilir)")
+                    print(" (2) Ağır Hasar (Hizmet dışı kalacak)")
+                    
+                    severity = int(input("Seçiminiz (1/2): "))
+                    
+                    unit.report_accident(severity_level=severity)
+                    
+                    # Güncel durumları (is_broken, availability) kalıcı olarak kaydet
+                    repo.save_unit_info(units)
+                    print(f"\n✅ {target_id} numaralı aracın kaza raporu sisteme işlendi.")
+                
+                else:
+                    print(f"[HATA] {target_id} ID'li bir araç envanterde bulunamadı!")
+
+            except ValueError as e:
+                print(f"[HATA] {e}")
+            
+            input("\nDevam etmek için Enter'a basın...")
+            
         # Çıkış
         elif text == "Q":
             print("[SİSTEM] Sistem kapatılıyor... İyi nöbetler")

@@ -4,11 +4,36 @@ import numpy as np
 
 class EmergencyService:
     def __init__(self, repository):
-        self.nearest_unit = None
-        self.repository = repository
-        self.location = np.random.randint(0,22)
+        self.__nearest_unit = None
+        self.__repository = repository
+        self.__location = None
 
-    def creating_case(self, case_type, severity, unit_list):
+    @property
+    def nearest_unit(self):
+        return self.__nearest_unit
+    
+    @nearest_unit.setter
+    def nearest_unit(self, new):
+        self.__nearest_unit = new
+
+    @property
+    def repository(self):
+        return self.__repository
+    
+    @repository.setter
+    def repository(self, new):
+        self.__repository = new
+
+    @property
+    def location(self):
+        return self.__location
+    
+    @location.setter
+    def location(self, new):
+        self.__location = new
+
+    def creating_case(self, case_type, severity, unit_list, case_location):
+        self.location = case_location
         # Olaya verilen puana göre olayın ciddiyetini belirler.
         if severity > 8:
             is_critical = "Evet"
@@ -183,7 +208,7 @@ class EmergencyService:
 
         # Olayın sonucunda oluşacak ölü ve yaralı sayılarını belirler
         number_of_injured = np.random.choice([0,1,2,3,0,0,0,5])
-        death_toll = np.random.choice([0,1,2,3,0,0,1])
+        number_of_death = np.random.choice([0,1,2,3,0,0,1])
     
         # Gelen olay türünü listede arar ve ilgili planı uygular
         for case_type, events in plans.items():
@@ -221,7 +246,6 @@ class EmergencyService:
                     time.sleep(2)
 
                 print("[BİLGİ] Müdahale tamamlandı.")
-                # --- REPOSITORY KAYDI ---
                 self.repository.save_event_history("[BİLGİ] Operasyon adımları tamamlandı.")
                 
                 time.sleep(2)
@@ -230,16 +254,17 @@ class EmergencyService:
                 # Sadece tehlikeli olaylarda ölü/yaralı raporu verir
                 if case_type in ["Trafik Kazası", "Yangın", "Patlama", "Çökme"]:
                      print("="*30)
-                     report_msg = f"[SONUÇ RAPORU] Yaralı Sayısı: {number_of_injured} - Ölü Sayısı: {death_toll}"
+                     report_msg = f"[SONUÇ RAPORU] Yaralı Sayısı: {number_of_injured} - Ölü Sayısı: {number_of_death}"
                      print(report_msg)
-                     self.repository.save_event_history(f"[SONUÇ RAPORU] Yaralı: {number_of_injured} | Vefat: {death_toll}")
+                     self.repository.save_event_history(f"[SONUÇ RAPORU] Yaralı: {number_of_injured} | Vefat: {number_of_death}")
                 else:
                      print(f"[SONUÇ RAPORU] Yaralı/Ölü Yok.")
                      self.repository.save_event_history("[SONUÇ RAPORU] Herhangi bir yaralanma veya can kaybı yok.")
 
-                # Birimin görevini tamamlayıp ayrıldığını bildirir
+                if number_of_injured > 0 or number_of_death > 0:
+                    print(["[SİSTEM] Ambulans olay yerine gönderiliyor"])
+
                 print(f"[BİLGİ] Birim olay yerinden ayrılıyor...")
-                # Yaptığı tüm işlemleri hem ekrana hem de veritabanına kaydeder ve 50 tane - ile kaydı bitirir
                 self.repository.save_event_history(f"Birim merkeze dönüyor.\n {"-"*50}")
 
                 # İşlemleri tamamlar ve döngüden çıkar

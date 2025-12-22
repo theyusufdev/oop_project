@@ -2,12 +2,43 @@ import datetime
 
 class EmergencyRepository():
     def __init__(self):
-        self.old_cases = {}
         self.status_file = "units_log.txt"
         self.file_name = "case_log.txt"
         self.event_history_file = "event_history_log.txt"
         self.case_counter = self.get_last_case_id()
 
+    @property
+    def status_file(self):
+        return self.__status_file
+    
+    @status_file.setter
+    def status_file(self, new):
+        self.__status_file = new
+
+    @property
+    def file_name(self):
+        return self.__file_name
+    
+    @file_name.setter
+    def file_name(self, new):
+        self.__file_name = new
+
+    @property
+    def event_history_file(self):
+        return self.__event_history_file
+    
+    @event_history_file.setter
+    def event_history_file(self, new):
+        self.__event_history_file = new
+
+    @property
+    def case_counter(self):
+        return self.__case_counter
+    
+    @case_counter.setter
+    def case_counter(self, new):
+        self.__case_counter = new
+    
     # Loglara bakarak olayın kaçıncı olay olduğunu belirler
     def get_last_case_id(self):
         try:

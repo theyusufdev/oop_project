@@ -1,9 +1,24 @@
 
 ==================================================
          CANLI FİLO TAKİP SİSTEMİ
-         Rapor Saati : 21-12-2025 23:07:21
-         Araç Sayısı : 11
+         Rapor Saati : 22-12-2025 17:52:06
+         Araç Sayısı : 12
 ==================================================
+
+
+--------------------------------------------------
+[AMBULANS KİMLİK KARTI]
+Araç Id                 : 101
+Araç Türü               : Ambulans
+Hizmette mi (Müsaitlik) : HAYIR (HİZMET DIŞI)
+Mevcut Konum            : 18
+Benzin Seviyesi         : 79
+Tıbbi Malzeme           : 45
+Sterilizasyon           : Evet
+Personel Durumu         : Eksik
+Siren Durumu            : Kapalı
+Görevde mi              : Hayır
+--------------------------------------------------
 
 
 --------------------------------------------------
@@ -11,7 +26,7 @@
 Araç Id                 : 102
 Araç Türü               : Ambulans
 Hizmette mi (Müsaitlik) : HAYIR (HİZMET DIŞI)
-Mevcut Konum            : 15
+Mevcut Konum            : 18
 Benzin Seviyesi         : 33
 Tıbbi Malzeme           : 88
 Sterilizasyon           : Hayır
@@ -26,7 +41,7 @@ Görevde mi              : Hayır
 Araç Id                 : 103
 Araç Türü               : Ambulans
 Hizmette mi (Müsaitlik) : EVET (MÜSAİT)
-Mevcut Konum            : 15
+Mevcut Konum            : 18
 Benzin Seviyesi         : 47
 Tıbbi Malzeme           : 93
 Sterilizasyon           : Evet
@@ -41,7 +56,7 @@ Görevde mi              : Hayır
 Araç Id                 : 104
 Araç Türü               : Ambulans
 Hizmette mi (Müsaitlik) : EVET (MÜSAİT)
-Mevcut Konum            : 15
+Mevcut Konum            : 18
 Benzin Seviyesi         : 63
 Tıbbi Malzeme           : 100
 Sterilizasyon           : Evet
@@ -120,9 +135,9 @@ Görevde mi              : Hayır
 Araç Id                 : 301
 Araç Türü               : İtfaiye
 Hizmette mi (Müsaitlik) : EVET (MÜSAİT)
-Mevcut Konum            : 13
+Mevcut Konum            : 15
 Benzin Seviyesi         : 83 lt
-Depodaki Su Seviyesi    : 239 lt
+Depodaki Su Seviyesi    : 3000 lt
 Depodaki Köpük Seviyesi : 239 lt
 Merdiven Uzunluğu       : 45 m
 Personel Durumu         : Yeterli
@@ -136,9 +151,9 @@ Görevde mi              : Hayır
 Araç Id                 : 302
 Araç Türü               : İtfaiye
 Hizmette mi (Müsaitlik) : EVET (MÜSAİT)
-Mevcut Konum            : 13
+Mevcut Konum            : 15
 Benzin Seviyesi         : 95 lt
-Depodaki Su Seviyesi    : 112 lt
+Depodaki Su Seviyesi    : 1000 lt
 Depodaki Köpük Seviyesi : 112 lt
 Merdiven Uzunluğu       : 40 m
 Personel Durumu         : Yeterli
@@ -152,9 +167,9 @@ Görevde mi              : Hayır
 Araç Id                 : 303
 Araç Türü               : İtfaiye
 Hizmette mi (Müsaitlik) : HAYIR (HİZMET DIŞI)
-Mevcut Konum            : 13
+Mevcut Konum            : 15
 Benzin Seviyesi         : 63 lt
-Depodaki Su Seviyesi    : 569 lt
+Depodaki Su Seviyesi    : 2000 lt
 Depodaki Köpük Seviyesi : 569 lt
 Merdiven Uzunluğu       : 45 m
 Personel Durumu         : Eksik
@@ -168,9 +183,9 @@ Görevde mi              : Hayır
 Araç Id                 : 304
 Araç Türü               : İtfaiye
 Hizmette mi (Müsaitlik) : EVET (MÜSAİT)
-Mevcut Konum            : 13
+Mevcut Konum            : 15
 Benzin Seviyesi         : 58 lt
-Depodaki Su Seviyesi    : 92 lt
+Depodaki Su Seviyesi    : 1500 lt
 Depodaki Köpük Seviyesi : 92 lt
 Merdiven Uzunluğu       : 30 m
 Personel Durumu         : Yeterli
