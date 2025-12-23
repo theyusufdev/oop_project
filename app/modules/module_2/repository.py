@@ -1,6 +1,7 @@
 import json
 import os
 from .implementations import ElectricityMeter, WaterMeter, GasMeter
+from .logger import SystemLogger  # <--- YENİ EKLENDİ
 
 class MeterRepository:
     """
@@ -12,7 +13,6 @@ class MeterRepository:
 
     def __init__(self):
         # Dosya yolunu dinamik olarak belirle
-        # Bu dosyanın olduğu klasörün içine 'data' klasörü oluşturacağız
         self.base_dir = os.path.dirname(os.path.abspath(__file__))
         self.data_dir = os.path.join(self.base_dir, "data")
         self.file_path = os.path.join(self.data_dir, "meters.json")
@@ -46,26 +46,22 @@ class MeterRepository:
         """
         current_data = self._load_from_file()
         
-        # 1. ADIM: Verileri senin base.py yapına (Getter Metotlarına) göre çekiyoruz
-        # 'get_id' metodunu kullanıyoruz, çünkü değişkene direkt erişim kapalı (_id)
-        
         # ID Çekme
         if hasattr(meter, "get_id"):
             m_id = meter.get_id()
         else:
-            # Yedek plan: Direkt _id'ye eriş
             m_id = getattr(meter, "_id", "Unknown-ID")
 
-        # Tip Çekme (base.py'de get_type yok, o yüzden _type özelliğine bakıyoruz)
+        # Tip Çekme
         m_type = getattr(meter, "_type", "Unknown-Type")
 
-        # Tüketim Çekme (get_usage_amount metodu var)
+        # Tüketim Çekme
         if hasattr(meter, "get_usage_amount"):
             m_usage = meter.get_usage_amount()
         else:
             m_usage = getattr(meter, "_usage_amount", 0.0)
 
-        # Konum Çekme (get_location metodu var)
+        # Konum Çekme
         if hasattr(meter, "get_location"):
             m_location = meter.get_location()
         else:
@@ -79,14 +75,11 @@ class MeterRepository:
             "status": "Active"
         }
 
-        # 2. ADIM: Türe özel alanları ekle (Voltaj, Basınç vb.)
-        # Bu özellikler implementations.py içinde tanımlı olduğu için genellikle public'tir (self.voltage)
+        # Türe özel alanları ekle
         if "Electricity" in m_type:
             meter_dict["voltage"] = getattr(meter, "voltage", 220)
-            
         elif "Water" in m_type:
             meter_dict["pipe_diameter"] = getattr(meter, "pipe_diameter", 0.5)
-            
         elif "Gas" in m_type:
             meter_dict["pressure"] = getattr(meter, "pressure", 4)
 
@@ -95,6 +88,13 @@ class MeterRepository:
         
         print(f"[Repo] {m_id} başarıyla kaydedildi.")
         
+        # --- LOG KAYDI ---
+        try:
+            logger = SystemLogger()
+            logger.log_info(f"Veritabanı İşlemi: {m_id} ID'li {m_type} sayacı sisteme eklendi.")
+        except Exception:
+            pass
+            
     def get_all(self):
         """Tüm kayıtlı sayaçları getirir."""
         return self._load_from_file()
