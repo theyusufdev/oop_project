@@ -7,11 +7,11 @@ from app.modules.module_2.implementations import (
 )
 
 from app.modules.module_3.implementations import (
-    Base3SubClass1, Base3SubClass2
+    AmbulanceUnit, PoliceUnit, FireFightingUnit
 )
 
 from app.modules.module_4.implementations import (
-    Base4SubClass1, Base4SubClass2
+    GidaYardimi, BarinmaDestegi, EgitimDestegi
 )
 
 def run_demo():
@@ -35,19 +35,32 @@ def run_demo():
         print(n.get_status())
 
         
-    # Ogrenci 3 (Modul 3)
-    base_3 = [
-        Base3SubClass1("parametre5"),
-        Base3SubClass2("parametre6")
-    ]
-    for p in base_3:
-        p.method3()
+    # Ogrenci 3 (Modul 3) - Acil Durum Birimleri
+    ambulans = AmbulanceUnit(101, 80, True, 90, True)
+    polis = PoliceUnit(201, 75, True, "Merkez")
+    itfaiye = FireFightingUnit(301, 85, True, 5000, 3000)
+    
+    print("\n=== Acil Durum Birimleri ===")
+    ambulans.report_status()
+    print()
+    polis.report_status()
+    print()
+    itfaiye.report_status()
 
-    # Ogrenci 4 (Modul 4)
-    object1 = Base4SubClass1("parametre7")
-    object2 = Base4SubClass2("parametre8")
-    object1.method4()
-    object2.method4()
+    # Ogrenci 4 (Modul 4) - Sosyal Hizmetler
+    gida_yardimi = GidaYardimi(1, 1500, 15)
+    barinma_destegi = BarinmaDestegi(2, 5000, "daire")
+    egitim_destegi = EgitimDestegi(3, 2000, "lise")
+    
+    print(f"\n{gida_yardimi}")
+    print(f"{barinma_destegi}")
+    print(f"{egitim_destegi}")
+    
+    # Örnek vatandaş
+    vatandas = {"ad": "Ali Yılmaz", "gelir": 8000, "evi_var_mi": False, "ogrenci_mi": True}
+    print(f"\nGıda Yardımı Uygunluk: {gida_yardimi.uygunluk_kontrolu(vatandas)}")
+    print(f"Barınma Desteği Uygunluk: {barinma_destegi.uygunluk_kontrolu(vatandas)}")
+    print(f"Eğitim Desteği Uygunluk: {egitim_destegi.uygunluk_kontrolu(vatandas)}")
 
 if __name__ == "__main__":
     run_demo()
