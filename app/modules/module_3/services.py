@@ -2,6 +2,8 @@ import os
 import time
 import numpy as np
 
+from app.modules.module_3.implementations import Criminal, FireStation, Hospital, PoliceStation, Victim
+
 class EmergencyService:
     def __init__(self, repository):
         self.__nearest_unit = None
@@ -34,15 +36,24 @@ class EmergencyService:
 
     def creating_case(self, case_type, severity, unit_list, case_location):
         self.location = case_location
+    
         # Olaya verilen puana göre olayın ciddiyetini belirler.
         if severity > 8:
             is_critical = "Evet"
         else:
             is_critical = "Hayır"
-        
+    
+        # Hangi birim türüne ihtiyaç olduğunu belirle
+        needed_unit_type = self.get_unit_type_for_case(case_type)
+    
         # En yakın birimi bul
-        self.nearest_unit = self.finding_the_nearest_unit(unit_list, self.get_unit_type_for_case(case_type))
-        
+        self.nearest_unit = self.finding_the_nearest_unit(unit_list, needed_unit_type)
+    
+        # Atanan birim bilgisini hazırla
+        assigned_unit_info = []
+        if self.nearest_unit:
+            assigned_unit_info.append(f"{self.nearest_unit.unit_type} (ID: {self.nearest_unit.unit_id})")
+    
         # Vaka bilgilerini sözlük içinde toplar
         new_case = {
             "location": self.location,
@@ -51,9 +62,11 @@ class EmergencyService:
             "critical_status": is_critical,
             "status": "Active",
             "assigned_unit": self.nearest_unit.unit_type if self.nearest_unit else None,
-            "assigned_unit_id": self.nearest_unit.unit_id if self.nearest_unit else None
+            "assigned_unit_id": self.nearest_unit.unit_id if self.nearest_unit else None,
+            "assigned_unit_info": assigned_unit_info,  # Bu yeni alan
+            "needed_unit_types": [needed_unit_type] if needed_unit_type else []
         }
-        
+    
         # Yeni vakanın oluştuğu bilgisini verir
         print("="*30)
         print(f"Vaka konumu: {new_case['location']}")
@@ -64,13 +77,15 @@ class EmergencyService:
         print(f"Görevlendirilen birim ID: {new_case['assigned_unit_id']}")
         print("="*30)
         print("\n")
-        
+    
+        self.repository.save_case(new_case)
+
         # Eğer birim atandıysa müdahale planını çalıştır
         if self.nearest_unit:
             self.creating_intervention_plan(case_type)
-        
-        return new_case
     
+        return new_case
+
     def get_unit_type_for_case(self, case_type):
         #Vaka türüne göre gerekli birim türünü döndürür
         case_to_unit = {
@@ -91,35 +106,41 @@ class EmergencyService:
         }
         return case_to_unit.get(case_type, "")
         
-    def finding_the_nearest_unit(self, unit_list, unit_type):
+    def finding_the_nearest_unit(self, unit_list, unit_type, incident_location=None):
         # En yakın aracı bulmak için başlangıç değişkenlerini tanımlar
         min_distance = 999999999999
         self.nearest_unit = None
 
+        # Konum kontrolü
+        if incident_location is None:
+            if self.location is None:
+                print("[HATA] Konum bilgisi bulunamadı!")
+                return None
+            incident_location = self.location
+
         # Verilen listedeki tüm araçları tek tek kontrol eder
         for unit in unit_list: 
-            # Aracın müsait olup olmadığını ve olay tipine uygunluğunu kontrol eder
             if unit.availability and unit.unit_type == unit_type:
                 # Olay yeri ile araç arasındaki mesafeyi hesaplar.
-                distance = abs(unit.current_location - self.location) 
+                distance = abs(unit.current_location - incident_location) 
 
                 # Eğer bu araç daha önce bulunanlardan daha yakınsa, en yakın olarak bunu seçer
                 if distance < min_distance:
                     min_distance = distance
                     self.nearest_unit = unit
-                    
+                        
         # Eğer uygun bir araç bulunduysa sevk işlemlerini başlatır
         if self.nearest_unit:
             print("\n")
             print("="*30)
-            print("[BİLGİ] Yeni vaka oluşturuldu")
+            print("[BİLGİ] En yakın birim bulundu")
             print(f"[BİLGİ] {self.nearest_unit.unit_id} kodlu {self.nearest_unit.unit_type} olay yerine sevk ediliyor.")
             print(f"[BİLGİ] Tahmini Mesafe: {min_distance} km")
             print(f"[BİLGİ] {self.nearest_unit.unit_type} biriminin anlık konumu: {self.nearest_unit.current_location}") 
             print("="*30)
             print("\n")
             
-            # Aracın durumunu günceller: Göreve çıkarır, meşgul yapar, sireni açar ve konumunu değiştirir
+            # Aracın durumunu günceller: Göreve çıkarır, meşgul yapar, sireni açar
             self.nearest_unit.is_it_on_duty = True
             self.nearest_unit.availability = False 
             # Çok biçimlilik örneği
@@ -129,6 +150,42 @@ class EmergencyService:
             # Hiçbir araç bulunamazsa hata mesajı verir
             print(f"[BİLGİ]: {unit_type} türünde müsait araç bulunamadı!")
             return None
+            # En yakın aracı bulmak için başlangıç değişkenlerini tanımlar
+            min_distance = 999999999999
+            self.__nearest_unit = None
+
+            # Verilen listedeki tüm araçları tek tek kontrol eder
+            for unit in unit_list: 
+                if unit.availability and unit.unit_type == unit_type:
+                    # Olay yeri ile araç arasındaki mesafeyi hesaplar.
+                    distance = abs(unit.current_location - self.__location) 
+
+                    # Eğer bu araç daha önce bulunanlardan daha yakınsa, en yakın olarak bunu seçer
+                    if distance < min_distance:
+                        min_distance = distance
+                        self.nearest_unit = unit
+                        
+            # Eğer uygun bir araç bulunduysa sevk işlemlerini başlatır
+            if self.nearest_unit:
+                print("\n")
+                print("="*30)
+                print("[BİLGİ] Yeni vaka oluşturuldu")
+                print(f"[BİLGİ] {self.__nearest_unit.unit_id} kodlu {self.nearest_unit.unit_type} olay yerine sevk ediliyor.")
+                print(f"[BİLGİ] Tahmini Mesafe: {min_distance} km")
+                print(f"[BİLGİ] {self.__nearest_unit.unit_type} biriminin anlık konumu: {self.__nearest_unit.current_location}") 
+                print("="*30)
+                print("\n")
+                
+                # Aracın durumunu günceller: Göreve çıkarır, meşgul yapar, sireni açar ve konumunu değiştirir
+                self.__nearest_unit.is_it_on_duty = True
+                self.__nearest_unit.availability = False 
+                # Çok biçimlilik örneği
+                self.__nearest_unit.open_siren()
+                return self.__nearest_unit
+            else:
+                # Hiçbir araç bulunamazsa hata mesajı verir
+                print(f"[BİLGİ]: {unit_type} türünde müsait araç bulunamadı!")
+                return None
 
     def creating_intervention_plan(self, case):
 
@@ -265,7 +322,7 @@ class EmergencyService:
                     print(["[SİSTEM] Ambulans olay yerine gönderiliyor"])
 
                 print(f"[BİLGİ] Birim olay yerinden ayrılıyor...")
-                self.repository.save_event_history(f"Birim merkeze dönüyor.\n {"-"*50}")
+                self.repository.save_event_history("Birim merkeze dönüyor.\n" +f"{'='*50}")
 
                 # İşlemleri tamamlar ve döngüden çıkar
                 break
@@ -465,3 +522,352 @@ class EmergencyService:
         id = int(input("Silinecek aracın ID: "))
 
         self.repository.delete_unit_from_file(id)
+
+
+class HumanService:
+    def __init__(self, repository):
+        self.__population_registry = []
+        self.__repository = repository
+
+    @property
+    def population_registry(self):
+        return self.__population_registry
+    
+    @population_registry.setter
+    def population_registry(self, new):
+        self.__population_registry = new
+
+    @property
+    def repository(self):
+        return self.__repository
+    
+    @repository.setter
+    def repository(self, new):
+        self.__repository = new
+
+    def register_human(self, human):
+        if human in None:
+            print("[HATA] Geçersiz kayıt denemesi")
+
+        if human not in self.__population_registry:
+            self.__population_registry.append(human)
+            self.__repository.save_human_registry(human)
+            print(f"[SİSTEM] {human.name} {human.lastname} suçlu olarak sisteme kaydedildi.")
+            return True
+        else:
+            print(f"[SİSTEM] {human.name} zaten sistemde kayıtlı.")
+            return False
+
+    def register_criminal(self, criminal):
+        if criminal is None:
+            print("[HATA] Geçersiz kayıt denemesi")
+            return False
+            
+        if criminal not in self.__population_registry:
+            self.__population_registry.append(criminal)
+            self.__repository.save_criminal_record(criminal)
+            print(f"[SİSTEM] {criminal.name} {criminal.lastname} suçlu olarak sisteme kaydedildi.")
+            return True
+        else:
+            print(f"[SİSTEM] {criminal.name} zaten sistemde kayıtlı.")
+            return False
+
+    def register_victim(self, victim):
+        if victim is None:
+            print("[HATA] Geçersiz kayıt denemesi: Nesne boş.")
+            return False
+            
+        if victim not in self.__population_registry:
+            self.__population_registry.append(victim)
+            self.__repository.save_victim_record(victim)
+            print(f"[SİSTEM] {victim.name} {victim.lastname} mağdur olarak sisteme kaydedildi.")
+            return True
+        else:
+            print(f"[SİSTEM] {victim.name} zaten sistemde kayıtlı.")
+            return False
+
+    def update_criminal_status(self, criminal_id, is_caught):
+        for person in self.__population_registry:
+            if isinstance(person, Criminal) and person.id == criminal_id:
+                person.is_caught = is_caught
+                self.__repository.update_criminal_status(criminal_id, is_caught)
+                return True
+        
+        print(f"[HATA] {criminal_id} TC'li suçlu sistemde bulunamadı")
+        return False
+
+    def find_person_by_id(self, person_id):
+        print(f"[ARAMA] ID: {person_id} için veritabanı taranıyor...")
+        
+        for person in self.__population_registry:
+            if person.id == person_id:
+                print(f"[BULUNDU] Kişi: {person.name} {person.lastname}")
+                return person
+        
+        print("[BULUNAMADI] Belirtilen ID ile eşleşen kayıt yok.")
+        return None
+
+    def filter_critical_victims(self, min_severity=5):
+        critical_list = []
+        print(f"[SİSTEM] Yaralanma derecesi {min_severity} ve üzeri olanlar listeleniyor...")
+        
+        for person in self.__population_registry:
+            if isinstance(person, Victim) and person.is_alive:
+                if person.degree_of_injury >= min_severity:
+                    critical_list.append(person)
+                    print(f" [SİSTEM] Eklendi: {person.name} (Derece: {person.degree_of_injury})")
+        
+        return critical_list
+
+    def get_registry_count(self):
+        count = len(self.__population_registry)
+        print(f"[BİLGİ] Şu an sistemde {count} kayıtlı insan var.")
+        return count
+
+    def list_all_criminals(self):
+        criminals = [p for p in self.__population_registry if isinstance(p, Criminal)]
+        
+        if not criminals:
+            print("[BİLGİ] Sistemde kayıtlı suçlu bulunmamaktadır.")
+            return
+        
+        print("\n" + "="*50)
+        print("          🚨 SUÇLU LİSTESİ 🚨")
+        print("="*50)
+        
+        for criminal in criminals:
+            status = "🔴 FİRARDA" if not criminal.is_caught else "🟢 GÖZALTINDA"
+            print(f"TC: {criminal.id} | {criminal.name} {criminal.lastname}")
+            print(f"   Tehlike: {criminal.danger_level}/10 | Durum: {status}")
+            print("-" * 50)
+
+    def list_all_victims(self):
+        victims = [p for p in self.__population_registry if isinstance(p, Victim)]
+        
+        if not victims:
+            print("[BİLGİ] Sistemde kayıtlı mağdur bulunmamaktadır.")
+            return
+        
+        print("\n" + "="*50)
+        print("          🚑 MAĞDUR LİSTESİ 🚑")
+        print("="*50)
+        
+        for victim in victims:
+            severity = "🔴 KRİTİK" if victim.degree_of_injury > 7 else "🟡 CİDDİ" if victim.degree_of_injury > 4 else "🟢 HAFİF"
+            print(f"TC: {victim.id} | {victim.name} {victim.lastname}")
+            print(f"   Yaralanma: {victim.degree_of_injury}/10 | Durum: {severity}")
+            print("-" * 50)
+
+
+class StructureService():
+    def __init__(self, repository):
+        self.__structures = []
+        self.__repository = repository
+
+    @property
+    def structures(self):
+        return self.__structures
+
+    @structures.setter
+    def structures(self, new):
+        self.__structures = new
+
+    @property
+    def repository(self):
+        return self.__repository
+
+    @repository.setter
+    def repository(self, new):
+        self.__repository = new
+
+    def register_structure(self, structure):
+        if structure not in self.__structures:
+            self.__structures.append(structure)
+            self.__repository.save_structure_registry(self.__structures)
+            print(f"[SİSTEM] Yeni yapı sisteme eklendi: {structure.name} (Konum: {structure.location})")
+
+    def dispatch_nearest_unit(self, incident_location, needed_type):
+        best_candidate = None
+        min_dist = 9999999
+
+        structures = [s for s in self.__structures if isinstance(s, needed_type)]
+
+        print(f"\n[SİSTEM] Konum {incident_location} için en uygun {needed_type.__name__} aranıyor...")
+
+        for struct in structures:
+            dist = StructureService.calculate_logistical_cost(incident_location, struct.location)
+        
+            if struct.current_occupancy < struct.capacity:
+                if dist < min_dist:
+                    min_dist = dist
+                    best_candidate = struct
+    
+        if best_candidate:
+            print(f"✅ BULUNDU: {best_candidate.name})")
+            return best_candidate
+        else:
+            print("❌ KRİTİK: Uygun kapasiteye sahip birim bulunamadı!")
+            return None
+
+    @staticmethod
+    def calculate_logistical_cost(loc1, loc2):
+        return abs(loc1 - loc2) * 1.5
+
+    def list_all_structures(self):
+        if not self.__structures:
+            print("[BİLGİ] Sistemde kayıtlı yapı bulunmamaktadır.")
+            return
+    
+        print("\n" + "="*50)
+        print("          🏥 YAPI LİSTESİ 🏥")
+        print("="*50)
+    
+        for structure in self.__structures:
+            if isinstance(structure, Hospital):
+                struct_type = "🏥 Hastane"
+                info = f"Yatak: {structure.current_occupancy}/{structure.capacity}"
+            elif isinstance(structure, PoliceStation):
+                struct_type = "🚓 Karakol"
+                info = f"Gözaltı: {structure.current_occupancy}/{structure.capacity}"
+            elif isinstance(structure, FireStation):
+                struct_type = "🚒 İtfaiye"
+                info = f"Araç: {structure.current_occupancy}/{structure.capacity}"
+            else:
+                struct_type = "🏛 Diğer"
+                info = f"Kapasite: {structure.current_occupancy}/{structure.capacity}"
+        
+            print(f"{struct_type} | {structure.name}")
+            print(f"   Konum: {structure.location} | {info}")
+            print("-" * 50)
+
+    def manage_structure_capacity(self):
+        if not self.__structures:
+            print("[BİLGİ] Yönetilecek yapı bulunmamaktadır.")
+            return
+    
+        print("\n" + "="*50)
+        print("         📊 YAPI KAPASİTE YÖNETİMİ")
+        print("="*50)
+    
+        for i, structure in enumerate(self.__structures):
+            print(f"[{i+1}] {structure.name} ({type(structure).__name__})")
+            print(f"     Mevcut: {structure.current_occupancy}/{structure.capacity}")
+    
+        try:
+            choice = int(input("\n👉 İşlem yapmak istediğiniz yapı numarası: ")) - 1
+            if choice < 0 or choice >= len(self.__structures):
+                print("[HATA] Geçersiz seçim!")
+                return
+        except ValueError:
+            print("[HATA] Lütfen sayı giriniz!")
+            return
+    
+        selected = self.__structures[choice]
+    
+        print(f"\nSeçilen yapı: {selected.name}")
+        print(f"Mevcut durum: {selected.current_occupancy}/{selected.capacity}")
+    
+        print("\n[1] Kapasiteyi Artır (Yeni hasta/gözaltı ekle)")
+        print("[2] Kapasiteyi Azalt (Taburcu/serbest bırak)")
+        print("[3] Kapasite Bilgilerini Güncelle")
+        print("[4] İptal")
+    
+        try:
+            text = input("Seçiminiz: ")
+        
+            if text == "1":
+                if selected.current_occupancy < selected.capacity:
+                    selected.current_occupancy += 1
+                    print(f"[BAŞARILI] Kapasite artırıldı: {selected.current_occupancy}/{selected.capacity}")
+                    self.__repository.save_structure_registry(self.__structures)
+                    self.__repository.save_event_history(f"[KAPASİTE] {selected.name} kapasitesi artırıldı")
+                else:
+                    print("[UYARI] Maksimum kapasiteye ulaşıldı!")
+        
+            elif text == "2":
+                if selected.current_occupancy > 0:
+                    selected.current_occupancy -= 1
+                    print(f"[BAŞARILI] Kapasite azaltıldı: {selected.current_occupancy}/{selected.capacity}")
+                    self.__repository.save_structure_registry(self.__structures)
+                    self.__repository.save_event_history(f"[KAPASİTE] {selected.name} kapasitesi azaltıldı")
+                else:
+                    print("[UYARI] Zaten boş!")
+        
+            elif text == "3":
+                try:
+                    new_current = int(input("Yeni mevcut doluluk: "))
+                    new_capacity = int(input("Yeni toplam kapasite: "))
+                
+                    if new_current < 0 or new_capacity < 0:
+                        print("[HATA] Negatif değer olamaz!")
+                        return
+                
+                    if new_current > new_capacity:
+                        print("[HATA] Mevcut doluluk kapasiteden fazla olamaz!")
+                        return
+                
+                    selected.current_occupancy = new_current
+                    selected.capacity = new_capacity
+                    print(f"[BAŞARILI] Kapasite güncellendi: {selected.current_occupancy}/{selected.capacity}")
+                    self.__repository.save_structure_registry(self.__structures)
+                    self.__repository.save_event_history(f"[KAPASİTE] {selected.name} kapasitesi tamamen güncellendi")
+                except ValueError:
+                    print("[HATA] Geçersiz sayı formatı!")
+        
+            elif text == "4":
+                print("[BİLGİ] İşlem iptal edildi.")
+        
+            else:
+                print("[HATA] Geçersiz seçim!")
+    
+        except Exception as e:
+            print(f"[HATA] İşlem sırasında hata: {e}")
+
+    def find_structure_by_name(self, name):
+        for structure in self.__structures:
+            if structure.name.lower() == name.lower():
+                return structure
+        return None
+
+    def get_structure_statistics(self):
+        stats = {
+            "total": len(self.__structures),
+            "hospitals": 0,
+            "police_stations": 0,
+            "fire_stations": 0,
+            "total_capacity": 0,
+            "total_occupancy": 0
+        }
+    
+        for structure in self.__structures:
+            stats["total_capacity"] += structure.capacity
+            stats["total_occupancy"] += structure.current_occupancy
+        
+            if isinstance(structure, Hospital):
+                stats["hospitals"] += 1
+            elif isinstance(structure, PoliceStation):
+                stats["police_stations"] += 1
+            elif isinstance(structure, FireStation):
+                stats["fire_stations"] += 1
+    
+        return stats
+
+    def show_statistics(self):
+        stats = self.get_structure_statistics()
+    
+        print("\n" + "="*50)
+        print("          📈 YAPI İSTATİSTİKLERİ")
+        print("="*50)
+    
+        print(f"Toplam Yapı Sayısı: {stats['total']}")
+        print(f"🏥 Hastane Sayısı: {stats['hospitals']}")
+        print(f"🚓 Karakol Sayısı: {stats['police_stations']}")
+        print(f"🚒 İtfaiye Sayısı: {stats['fire_stations']}")
+        print(f"Toplam Kapasite: {stats['total_capacity']}")
+        print(f"Toplam Doluluk: {stats['total_occupancy']}")
+        print(f"Doluluk Oranı: %{(stats['total_occupancy']/stats['total_capacity']*100 if stats['total_capacity']>0 else 0):.1f}")
+    
+        if stats['total_occupancy'] > stats['total_capacity'] * 0.8:
+            print("[UYARI] Sistem kapasitesi kritik seviyede!")
+    
+        print("="*50)
