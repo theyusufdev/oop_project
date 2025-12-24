@@ -31,15 +31,6 @@ class ElectricityMeter(Utility):
     def __init__(self, meter_id, usage, location, voltage=220):
         """
         Yeni bir Elektrik Sayacı nesnesi başlatır (Constructor).
-
-        Args:
-            meter_id (str): Sayacın benzersiz seri numarası (Primary Key).
-            usage (float): kWh (Kilowatt-saat) cinsinden tüketim miktarı.
-            location (str): Abonenin adresi veya konum bilgisi.
-            voltage (int, optional): Hat gerilimi. Varsayılan: 220V.
-
-        Raises:
-            ValueError: Eğer voltaj değeri negatif veya mantıksız ise.
         """
         # Base sınıfın (Utility) yapıcısını çağırarak temel özellikleri set ediyoruz.
         # "Electricity" tipi otomatik olarak atanır.
@@ -102,12 +93,6 @@ class WaterMeter(Utility):
     def __init__(self, meter_id, usage, location, pipe_diameter=0.5):
         """
         Su Sayacı Kurulumu.
-
-        Args:
-            meter_id (str): Sayaç Seri No.
-            usage (float): m3 cinsinden kullanım.
-            location (str): Abone Adresi.
-            pipe_diameter (float, optional): Boru çapı (inç). Default: 0.5.
         """
         super().__init__(meter_id, "Water", usage, location)
         self.pipe_diameter = pipe_diameter
@@ -117,9 +102,7 @@ class WaterMeter(Utility):
         Su Faturası Hesaplama.
         
         Not: Su birim fiyatlarına atık su bedeli dahildir.
-        
-        Returns:
-            float: Ödenecek Tutar (TL).
+
         """
         unit_price = 4.0  # Birim Fiyat (TL/m3)
         return self.get_usage_amount() * unit_price
@@ -149,8 +132,7 @@ class GasMeter(Utility):
     def __init__(self, meter_id, usage, location, pressure=4):
         """
         Doğalgaz Sayacı Başlatıcı.
-
-        Args:
+        
             meter_id (str): Sayaç ID.
             usage (float): m3 cinsinden gaz tüketimi.
             location (str): Tesisat adresi.

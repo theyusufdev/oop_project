@@ -17,7 +17,6 @@ class SystemLogger:
         """
         Logger başlatıcı.
         
-        Args:
             log_file_name (str): Logların tutulacağı dosya adı.
         """
         self.module_dir = os.path.dirname(os.path.abspath(__file__))

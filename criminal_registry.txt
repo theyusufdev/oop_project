@@ -1322,7 +1322,11 @@ DURUM                   : 🟢 GÖZALTINDA
 ==================================================
 [SUÇLU KAYIT RAPORU] - TC: 12345678901
 ==================================================
+<<<<<<< HEAD
 Kayıt Tarihi            : 24-12-2025 12:17
+=======
+Kayıt Tarihi            : 23-12-2025 17:21
+>>>>>>> b6a8fd5405872da96fadf4ff23a7caaabb7af182
 Ad Soyad                : Ahmet Yılmaz
 Yaş                     : 35
 Kan Grubu               : A Rh+
@@ -1344,7 +1348,11 @@ DURUM                   : 🔴 FİRARDA - ACİL ARANMAKTADIR
 ==================================================
 [SUÇLU KAYIT RAPORU] - TC: 23456789012
 ==================================================
+<<<<<<< HEAD
 Kayıt Tarihi            : 24-12-2025 12:17
+=======
+Kayıt Tarihi            : 23-12-2025 17:21
+>>>>>>> b6a8fd5405872da96fadf4ff23a7caaabb7af182
 Ad Soyad                : Mehmet Kaya
 Yaş                     : 42
 Kan Grubu               : B Rh+
@@ -1366,7 +1374,11 @@ DURUM                   : 🟢 GÖZALTINDA
 ==================================================
 [SUÇLU KAYIT RAPORU] - TC: 12345678901
 ==================================================
+<<<<<<< HEAD
 Kayıt Tarihi            : 24-12-2025 12:36
+=======
+Kayıt Tarihi            : 23-12-2025 19:42
+>>>>>>> b6a8fd5405872da96fadf4ff23a7caaabb7af182
 Ad Soyad                : Ahmet Yılmaz
 Yaş                     : 35
 Kan Grubu               : A Rh+
@@ -1388,7 +1400,11 @@ DURUM                   : 🔴 FİRARDA - ACİL ARANMAKTADIR
 ==================================================
 [SUÇLU KAYIT RAPORU] - TC: 23456789012
 ==================================================
+<<<<<<< HEAD
 Kayıt Tarihi            : 24-12-2025 12:36
+=======
+Kayıt Tarihi            : 23-12-2025 19:42
+>>>>>>> b6a8fd5405872da96fadf4ff23a7caaabb7af182
 Ad Soyad                : Mehmet Kaya
 Yaş                     : 42
 Kan Grubu               : B Rh+
@@ -1410,7 +1426,11 @@ DURUM                   : 🟢 GÖZALTINDA
 ==================================================
 [SUÇLU KAYIT RAPORU] - TC: 12345678901
 ==================================================
+<<<<<<< HEAD
 Kayıt Tarihi            : 24-12-2025 12:39
+=======
+Kayıt Tarihi            : 23-12-2025 19:43
+>>>>>>> b6a8fd5405872da96fadf4ff23a7caaabb7af182
 Ad Soyad                : Ahmet Yılmaz
 Yaş                     : 35
 Kan Grubu               : A Rh+
@@ -1432,7 +1452,11 @@ DURUM                   : 🔴 FİRARDA - ACİL ARANMAKTADIR
 ==================================================
 [SUÇLU KAYIT RAPORU] - TC: 23456789012
 ==================================================
+<<<<<<< HEAD
 Kayıt Tarihi            : 24-12-2025 12:39
+=======
+Kayıt Tarihi            : 23-12-2025 19:43
+>>>>>>> b6a8fd5405872da96fadf4ff23a7caaabb7af182
 Ad Soyad                : Mehmet Kaya
 Yaş                     : 42
 Kan Grubu               : B Rh+
@@ -1454,7 +1478,11 @@ DURUM                   : 🟢 GÖZALTINDA
 ==================================================
 [SUÇLU KAYIT RAPORU] - TC: 12345678901
 ==================================================
+<<<<<<< HEAD
 Kayıt Tarihi            : 24-12-2025 12:50
+=======
+Kayıt Tarihi            : 23-12-2025 19:43
+>>>>>>> b6a8fd5405872da96fadf4ff23a7caaabb7af182
 Ad Soyad                : Ahmet Yılmaz
 Yaş                     : 35
 Kan Grubu               : A Rh+
@@ -1476,7 +1504,11 @@ DURUM                   : 🔴 FİRARDA - ACİL ARANMAKTADIR
 ==================================================
 [SUÇLU KAYIT RAPORU] - TC: 23456789012
 ==================================================
+<<<<<<< HEAD
 Kayıt Tarihi            : 24-12-2025 12:50
+=======
+Kayıt Tarihi            : 23-12-2025 19:43
+>>>>>>> b6a8fd5405872da96fadf4ff23a7caaabb7af182
 Ad Soyad                : Mehmet Kaya
 Yaş                     : 42
 Kan Grubu               : B Rh+
@@ -1498,7 +1530,11 @@ DURUM                   : 🟢 GÖZALTINDA
 ==================================================
 [SUÇLU KAYIT RAPORU] - TC: 12345678901
 ==================================================
+<<<<<<< HEAD
 Kayıt Tarihi            : 24-12-2025 12:52
+=======
+Kayıt Tarihi            : 23-12-2025 19:44
+>>>>>>> b6a8fd5405872da96fadf4ff23a7caaabb7af182
 Ad Soyad                : Ahmet Yılmaz
 Yaş                     : 35
 Kan Grubu               : A Rh+
@@ -1520,6 +1556,7 @@ DURUM                   : 🔴 FİRARDA - ACİL ARANMAKTADIR
 ==================================================
 [SUÇLU KAYIT RAPORU] - TC: 23456789012
 ==================================================
+<<<<<<< HEAD
 Kayıt Tarihi            : 24-12-2025 12:52
 Ad Soyad                : Mehmet Kaya
 Yaş                     : 42
@@ -1829,6 +1866,53 @@ DURUM                   : 🔴 FİRARDA - ACİL ARANMAKTADIR
 [SUÇLU KAYIT RAPORU] - TC: 23456789012
 ==================================================
 Kayıt Tarihi            : 24-12-2025 13:16
+=======
+Kayıt Tarihi            : 23-12-2025 19:44
+>>>>>>> b6a8fd5405872da96fadf4ff23a7caaabb7af182
+Ad Soyad                : Mehmet Kaya
+Yaş                     : 42
+Kan Grubu               : B Rh+
+Boy / Kilo              : 180 cm / 85 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 5/10 (ORTA RİSK)
+Suç Durumu              : GÖZALTINDA
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 1
+Suç Geçmişi             : ['Darp']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🟢 GÖZALTINDA
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 12345678901
+==================================================
+Kayıt Tarihi            : 24-12-2025 13:36
+Ad Soyad                : Ahmet Yılmaz
+Yaş                     : 35
+Kan Grubu               : A Rh+
+Boy / Kilo              : 175 cm / 80 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 7/10 (ORTA RİSK)
+Suç Durumu              : AKTİF
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 2
+Suç Geçmişi             : ['Hırsızlık']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🔴 FİRARDA - ACİL ARANMAKTADIR
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 23456789012
+==================================================
+Kayıt Tarihi            : 24-12-2025 13:36
 Ad Soyad                : Mehmet Kaya
 Yaş                     : 42
 Kan Grubu               : B Rh+
