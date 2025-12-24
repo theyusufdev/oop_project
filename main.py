@@ -1,6 +1,5 @@
 import time
 
-from app.modules.module_1.implementations import Base1SubClass1, Base1SubClass2
 from app.modules.module_2.implementations import (
      ElectricityMeter, WaterMeter, GasMeter
 )
@@ -19,36 +18,33 @@ from app.modules.module_4.implementations import (
 
 def run_demo():
     while True:
-        print("\n📚 PROJE MODÜL SEÇİCİ")
+        print("\n" + "="*60)
+        print("🚨 AKILLI ACİL DURUM YÖNETİM SİSTEMİ - ANA MENÜ")
+        print("="*60)
+        print("📚 PROJE MODÜL SEÇİCİ")
         print("-"*60)
         
         print("\n📦 MEVCUT MODÜLLER:")
-        print(" [1] 📊 Modül 1 - Öğrenci 1 Projesi")
         print(" [2] 🏙️ Modül 2 - Akıllı Şehir Altyapı Sistemi")
         print(" [3] 🚨 Modül 3 - Akıllı Acil Durum Yönetim Sistemi")
         print(" [4] 📈 Modül 4 - Sosyal Hizmetler Modülü")
         print(" [Q] ❌ Çıkış")
         print("-"*60)
         
-        choice = input("👉 Seçiminiz (1-4, Q): ").upper()
-        
-        if choice == "1":
-            print("\n" + "="*40)
-            print("📊 MODÜL 1 - ÖĞRENCİ 1 PROJESİ")
-            print("="*40)
-            base_1 = [
-                Base1SubClass1("parametre1"),
-                Base1SubClass2("parametre2")
-            ]
-            for n in base_1:
-                n.method1()
-            input("\nDevam etmek için Enter'a basın...")
-            
-        elif choice == "2":
+        choice = input("👉 Seçiminiz (2-4, Q): ").upper()
+
+        #Modül 2           
+        if choice == "2":
             print("\n" + "="*40)
             print("🏙️ MODÜL 2 - AKILLI ŞEHİR ALTYAPI SİSTEMİ")
             print("="*40)
-            run_module_3_demo()
+            
+            try:
+                from app.modules.module_2.demo import run_demo as run_module_2_demo
+                run_module_2_demo()
+            except ImportError as e:
+                print(f"[HATA] Modül 2 demo'su yüklenemedi: {e}")
+            
             input("\nDevam etmek için Enter'a basın...")
 
         # Modül 3   
