@@ -199,14 +199,6 @@ class Human(ABC):
     def is_alive(self, new):
         self.__is_alive = new
 
-    @abstractmethod
-    def report_status(self):
-        pass
-
-    @abstractmethod
-    def get_role_description(self):
-        pass
-
     @classmethod
     def get_population_count(cls):
         return f"Toplam İnsan Sayısı: {cls.total_population}"

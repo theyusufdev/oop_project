@@ -3,13 +3,14 @@ from .implementations import Criminal, Victim, Hospital, PoliceStation, FireStat
 
 class EmergencyRepository():
     def __init__(self):
-        self.status_file = "units_log.txt"
-        self.file_name = "case_log.txt"
-        self.event_history_file = "event_history_log.txt"
-        self.criminal_file = "criminal_registry.txt"
-        self.victim_file = "victim_registry.txt"
-        self.structure_file = "structure_registry.txt"
-        self.case_counter = self.get_last_case_id()
+        self.__status_file = "units_log.txt"
+        self.__file_name = "case_log.txt"
+        self.__event_history_file = "event_history_log.txt"
+        self.__criminal_file = "criminal_registry.txt"
+        self.__victim_file = "victim_registry.txt"
+        self.__structure_file = "structure_registry.txt"
+        self.__human_population = "human_population.txt"
+        self.__case_counter = self.get_last_case_id()
 
     @property
     def status_file(self):
@@ -58,6 +59,14 @@ class EmergencyRepository():
     @structure_file.setter
     def structure_file(self, new):
         self.__structure_file = new
+
+    @property
+    def human_population(self):
+        return self.__human_population
+    
+    @human_population.setter
+    def human_population(self, new):
+        self.__human_population = new
 
     @property
     def case_counter(self):
@@ -193,9 +202,13 @@ Vaka Durumu       : {case_data.get('status', 'Aktif')}
         # Vakanın sırasını belirliyoruz
         self.case_counter += 1
         current_time = datetime.datetime.now().strftime("%d-%m-%Y %H:%M")
+        is_criminal = False 
 
-        if isinstance(human, Criminal()):
-            is_criminal = True
+        try:
+            if isinstance(human, Criminal):
+                is_criminal = True
+        except NameError:
+            pass
         
         log_block = f"""
 ==================================================
@@ -221,7 +234,6 @@ Suç kaydı var mı  : {is_criminal}
             
         except Exception as e:
             print(f"[HATA] Dosyaya yazarken sorun çıktı: {e}")
-
 
 
     def save_criminal_record(self, criminal):

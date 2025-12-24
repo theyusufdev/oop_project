@@ -78,3 +78,51 @@ Atanan Birimler   : İtfaiye (ID: 301)
 Vaka Durumu       : Active
 ==================================================
 
+
+==================================================
+[VAKA KAYIT RAPORU] - ID: Olay-6
+==================================================
+Tarih             : 24-12-2025 12:18
+Olay Türü         : Yangın
+Olay Konumu       : 78
+--------------------------------------------------
+Ciddiyet Seviyesi : 9 / 10
+Kritik Durum      : Evet
+Gereken Ekipler   : ['İtfaiye']
+--------------------------------------------------
+Atanan Birimler   : İtfaiye (ID: 301)
+Vaka Durumu       : Active
+==================================================
+
+
+==================================================
+[VAKA KAYIT RAPORU] - ID: Olay-7
+==================================================
+Tarih             : 24-12-2025 12:39
+Olay Türü         : Kimyasal Sızıntı
+Olay Konumu       : 87
+--------------------------------------------------
+Ciddiyet Seviyesi : 8 / 10
+Kritik Durum      : Hayır
+Gereken Ekipler   : ['İtfaiye']
+--------------------------------------------------
+Atanan Birimler   : İtfaiye (ID: 301)
+Vaka Durumu       : Active
+==================================================
+
+
+==================================================
+[VAKA KAYIT RAPORU] - ID: Olay-8
+==================================================
+Tarih             : 24-12-2025 12:50
+Olay Türü         : Yangın
+Olay Konumu       : 76
+--------------------------------------------------
+Ciddiyet Seviyesi : 7 / 10
+Kritik Durum      : Hayır
+Gereken Ekipler   : ['İtfaiye']
+--------------------------------------------------
+Atanan Birimler   : İtfaiye (ID: 301)
+Vaka Durumu       : Active
+==================================================
+

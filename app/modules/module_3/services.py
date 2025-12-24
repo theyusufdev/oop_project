@@ -142,7 +142,9 @@ class EmergencyService:
             
             # Aracın durumunu günceller: Göreve çıkarır, meşgul yapar, sireni açar
             self.nearest_unit.is_it_on_duty = True
-            self.nearest_unit.availability = False 
+            self.nearest_unit.availability = False
+            self.nearest_unit.fuel_level -= 5
+
             # Çok biçimlilik örneği
             self.nearest_unit.open_siren()
             return self.nearest_unit
@@ -150,42 +152,6 @@ class EmergencyService:
             # Hiçbir araç bulunamazsa hata mesajı verir
             print(f"[BİLGİ]: {unit_type} türünde müsait araç bulunamadı!")
             return None
-            # En yakın aracı bulmak için başlangıç değişkenlerini tanımlar
-            min_distance = 999999999999
-            self.__nearest_unit = None
-
-            # Verilen listedeki tüm araçları tek tek kontrol eder
-            for unit in unit_list: 
-                if unit.availability and unit.unit_type == unit_type:
-                    # Olay yeri ile araç arasındaki mesafeyi hesaplar.
-                    distance = abs(unit.current_location - self.__location) 
-
-                    # Eğer bu araç daha önce bulunanlardan daha yakınsa, en yakın olarak bunu seçer
-                    if distance < min_distance:
-                        min_distance = distance
-                        self.nearest_unit = unit
-                        
-            # Eğer uygun bir araç bulunduysa sevk işlemlerini başlatır
-            if self.nearest_unit:
-                print("\n")
-                print("="*30)
-                print("[BİLGİ] Yeni vaka oluşturuldu")
-                print(f"[BİLGİ] {self.__nearest_unit.unit_id} kodlu {self.nearest_unit.unit_type} olay yerine sevk ediliyor.")
-                print(f"[BİLGİ] Tahmini Mesafe: {min_distance} km")
-                print(f"[BİLGİ] {self.__nearest_unit.unit_type} biriminin anlık konumu: {self.__nearest_unit.current_location}") 
-                print("="*30)
-                print("\n")
-                
-                # Aracın durumunu günceller: Göreve çıkarır, meşgul yapar, sireni açar ve konumunu değiştirir
-                self.__nearest_unit.is_it_on_duty = True
-                self.__nearest_unit.availability = False 
-                # Çok biçimlilik örneği
-                self.__nearest_unit.open_siren()
-                return self.__nearest_unit
-            else:
-                # Hiçbir araç bulunamazsa hata mesajı verir
-                print(f"[BİLGİ]: {unit_type} türünde müsait araç bulunamadı!")
-                return None
 
     def creating_intervention_plan(self, case):
 
@@ -319,7 +285,7 @@ class EmergencyService:
                      self.repository.save_event_history("[SONUÇ RAPORU] Herhangi bir yaralanma veya can kaybı yok.")
 
                 if number_of_injured > 0 or number_of_death > 0:
-                    print(["[SİSTEM] Ambulans olay yerine gönderiliyor"])
+                    print("[SİSTEM] Ambulans olay yerine gönderiliyor")
 
                 print(f"[BİLGİ] Birim olay yerinden ayrılıyor...")
                 self.repository.save_event_history("Birim merkeze dönüyor.\n" +f"{'='*50}")
@@ -546,13 +512,14 @@ class HumanService:
         self.__repository = new
 
     def register_human(self, human):
-        if human in None:
+        if human is None:
             print("[HATA] Geçersiz kayıt denemesi")
+            return False
 
         if human not in self.__population_registry:
             self.__population_registry.append(human)
             self.__repository.save_human_registry(human)
-            print(f"[SİSTEM] {human.name} {human.lastname} suçlu olarak sisteme kaydedildi.")
+            print(f"[SİSTEM] {human.name} {human.lastname} sisteme kaydedildi.")
             return True
         else:
             print(f"[SİSTEM] {human.name} zaten sistemde kayıtlı.")

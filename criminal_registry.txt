@@ -1318,3 +1318,531 @@ Hayatta mı              : EVET
 DURUM                   : 🟢 GÖZALTINDA
 ==================================================
 
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 12345678901
+==================================================
+Kayıt Tarihi            : 24-12-2025 12:17
+Ad Soyad                : Ahmet Yılmaz
+Yaş                     : 35
+Kan Grubu               : A Rh+
+Boy / Kilo              : 175 cm / 80 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 7/10 (ORTA RİSK)
+Suç Durumu              : AKTİF
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 2
+Suç Geçmişi             : ['Hırsızlık']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🔴 FİRARDA - ACİL ARANMAKTADIR
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 23456789012
+==================================================
+Kayıt Tarihi            : 24-12-2025 12:17
+Ad Soyad                : Mehmet Kaya
+Yaş                     : 42
+Kan Grubu               : B Rh+
+Boy / Kilo              : 180 cm / 85 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 5/10 (ORTA RİSK)
+Suç Durumu              : GÖZALTINDA
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 1
+Suç Geçmişi             : ['Darp']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🟢 GÖZALTINDA
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 12345678901
+==================================================
+Kayıt Tarihi            : 24-12-2025 12:36
+Ad Soyad                : Ahmet Yılmaz
+Yaş                     : 35
+Kan Grubu               : A Rh+
+Boy / Kilo              : 175 cm / 80 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 7/10 (ORTA RİSK)
+Suç Durumu              : AKTİF
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 2
+Suç Geçmişi             : ['Hırsızlık']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🔴 FİRARDA - ACİL ARANMAKTADIR
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 23456789012
+==================================================
+Kayıt Tarihi            : 24-12-2025 12:36
+Ad Soyad                : Mehmet Kaya
+Yaş                     : 42
+Kan Grubu               : B Rh+
+Boy / Kilo              : 180 cm / 85 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 5/10 (ORTA RİSK)
+Suç Durumu              : GÖZALTINDA
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 1
+Suç Geçmişi             : ['Darp']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🟢 GÖZALTINDA
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 12345678901
+==================================================
+Kayıt Tarihi            : 24-12-2025 12:39
+Ad Soyad                : Ahmet Yılmaz
+Yaş                     : 35
+Kan Grubu               : A Rh+
+Boy / Kilo              : 175 cm / 80 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 7/10 (ORTA RİSK)
+Suç Durumu              : AKTİF
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 2
+Suç Geçmişi             : ['Hırsızlık']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🔴 FİRARDA - ACİL ARANMAKTADIR
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 23456789012
+==================================================
+Kayıt Tarihi            : 24-12-2025 12:39
+Ad Soyad                : Mehmet Kaya
+Yaş                     : 42
+Kan Grubu               : B Rh+
+Boy / Kilo              : 180 cm / 85 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 5/10 (ORTA RİSK)
+Suç Durumu              : GÖZALTINDA
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 1
+Suç Geçmişi             : ['Darp']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🟢 GÖZALTINDA
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 12345678901
+==================================================
+Kayıt Tarihi            : 24-12-2025 12:50
+Ad Soyad                : Ahmet Yılmaz
+Yaş                     : 35
+Kan Grubu               : A Rh+
+Boy / Kilo              : 175 cm / 80 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 7/10 (ORTA RİSK)
+Suç Durumu              : AKTİF
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 2
+Suç Geçmişi             : ['Hırsızlık']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🔴 FİRARDA - ACİL ARANMAKTADIR
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 23456789012
+==================================================
+Kayıt Tarihi            : 24-12-2025 12:50
+Ad Soyad                : Mehmet Kaya
+Yaş                     : 42
+Kan Grubu               : B Rh+
+Boy / Kilo              : 180 cm / 85 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 5/10 (ORTA RİSK)
+Suç Durumu              : GÖZALTINDA
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 1
+Suç Geçmişi             : ['Darp']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🟢 GÖZALTINDA
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 12345678901
+==================================================
+Kayıt Tarihi            : 24-12-2025 12:52
+Ad Soyad                : Ahmet Yılmaz
+Yaş                     : 35
+Kan Grubu               : A Rh+
+Boy / Kilo              : 175 cm / 80 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 7/10 (ORTA RİSK)
+Suç Durumu              : AKTİF
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 2
+Suç Geçmişi             : ['Hırsızlık']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🔴 FİRARDA - ACİL ARANMAKTADIR
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 23456789012
+==================================================
+Kayıt Tarihi            : 24-12-2025 12:52
+Ad Soyad                : Mehmet Kaya
+Yaş                     : 42
+Kan Grubu               : B Rh+
+Boy / Kilo              : 180 cm / 85 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 5/10 (ORTA RİSK)
+Suç Durumu              : GÖZALTINDA
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 1
+Suç Geçmişi             : ['Darp']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🟢 GÖZALTINDA
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 12345678901
+==================================================
+Kayıt Tarihi            : 24-12-2025 12:54
+Ad Soyad                : Ahmet Yılmaz
+Yaş                     : 35
+Kan Grubu               : A Rh+
+Boy / Kilo              : 175 cm / 80 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 7/10 (ORTA RİSK)
+Suç Durumu              : AKTİF
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 2
+Suç Geçmişi             : ['Hırsızlık']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🔴 FİRARDA - ACİL ARANMAKTADIR
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 23456789012
+==================================================
+Kayıt Tarihi            : 24-12-2025 12:54
+Ad Soyad                : Mehmet Kaya
+Yaş                     : 42
+Kan Grubu               : B Rh+
+Boy / Kilo              : 180 cm / 85 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 5/10 (ORTA RİSK)
+Suç Durumu              : GÖZALTINDA
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 1
+Suç Geçmişi             : ['Darp']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🟢 GÖZALTINDA
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 12345678901
+==================================================
+Kayıt Tarihi            : 24-12-2025 12:59
+Ad Soyad                : Ahmet Yılmaz
+Yaş                     : 35
+Kan Grubu               : A Rh+
+Boy / Kilo              : 175 cm / 80 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 7/10 (ORTA RİSK)
+Suç Durumu              : AKTİF
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 2
+Suç Geçmişi             : ['Hırsızlık']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🔴 FİRARDA - ACİL ARANMAKTADIR
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 23456789012
+==================================================
+Kayıt Tarihi            : 24-12-2025 12:59
+Ad Soyad                : Mehmet Kaya
+Yaş                     : 42
+Kan Grubu               : B Rh+
+Boy / Kilo              : 180 cm / 85 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 5/10 (ORTA RİSK)
+Suç Durumu              : GÖZALTINDA
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 1
+Suç Geçmişi             : ['Darp']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🟢 GÖZALTINDA
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 12345678901
+==================================================
+Kayıt Tarihi            : 24-12-2025 13:04
+Ad Soyad                : Ahmet Yılmaz
+Yaş                     : 35
+Kan Grubu               : A Rh+
+Boy / Kilo              : 175 cm / 80 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 7/10 (ORTA RİSK)
+Suç Durumu              : AKTİF
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 2
+Suç Geçmişi             : ['Hırsızlık']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🔴 FİRARDA - ACİL ARANMAKTADIR
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 23456789012
+==================================================
+Kayıt Tarihi            : 24-12-2025 13:04
+Ad Soyad                : Mehmet Kaya
+Yaş                     : 42
+Kan Grubu               : B Rh+
+Boy / Kilo              : 180 cm / 85 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 5/10 (ORTA RİSK)
+Suç Durumu              : GÖZALTINDA
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 1
+Suç Geçmişi             : ['Darp']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🟢 GÖZALTINDA
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 12345678901
+==================================================
+Kayıt Tarihi            : 24-12-2025 13:09
+Ad Soyad                : Ahmet Yılmaz
+Yaş                     : 35
+Kan Grubu               : A Rh+
+Boy / Kilo              : 175 cm / 80 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 7/10 (ORTA RİSK)
+Suç Durumu              : AKTİF
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 2
+Suç Geçmişi             : ['Hırsızlık']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🔴 FİRARDA - ACİL ARANMAKTADIR
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 23456789012
+==================================================
+Kayıt Tarihi            : 24-12-2025 13:09
+Ad Soyad                : Mehmet Kaya
+Yaş                     : 42
+Kan Grubu               : B Rh+
+Boy / Kilo              : 180 cm / 85 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 5/10 (ORTA RİSK)
+Suç Durumu              : GÖZALTINDA
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 1
+Suç Geçmişi             : ['Darp']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🟢 GÖZALTINDA
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 12345678901
+==================================================
+Kayıt Tarihi            : 24-12-2025 13:11
+Ad Soyad                : Ahmet Yılmaz
+Yaş                     : 35
+Kan Grubu               : A Rh+
+Boy / Kilo              : 175 cm / 80 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 7/10 (ORTA RİSK)
+Suç Durumu              : AKTİF
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 2
+Suç Geçmişi             : ['Hırsızlık']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🔴 FİRARDA - ACİL ARANMAKTADIR
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 23456789012
+==================================================
+Kayıt Tarihi            : 24-12-2025 13:11
+Ad Soyad                : Mehmet Kaya
+Yaş                     : 42
+Kan Grubu               : B Rh+
+Boy / Kilo              : 180 cm / 85 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 5/10 (ORTA RİSK)
+Suç Durumu              : GÖZALTINDA
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 1
+Suç Geçmişi             : ['Darp']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🟢 GÖZALTINDA
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 12345678901
+==================================================
+Kayıt Tarihi            : 24-12-2025 13:14
+Ad Soyad                : Ahmet Yılmaz
+Yaş                     : 35
+Kan Grubu               : A Rh+
+Boy / Kilo              : 175 cm / 80 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 7/10 (ORTA RİSK)
+Suç Durumu              : AKTİF
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 2
+Suç Geçmişi             : ['Hırsızlık']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🔴 FİRARDA - ACİL ARANMAKTADIR
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 23456789012
+==================================================
+Kayıt Tarihi            : 24-12-2025 13:14
+Ad Soyad                : Mehmet Kaya
+Yaş                     : 42
+Kan Grubu               : B Rh+
+Boy / Kilo              : 180 cm / 85 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 5/10 (ORTA RİSK)
+Suç Durumu              : GÖZALTINDA
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 1
+Suç Geçmişi             : ['Darp']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🟢 GÖZALTINDA
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 12345678901
+==================================================
+Kayıt Tarihi            : 24-12-2025 13:16
+Ad Soyad                : Ahmet Yılmaz
+Yaş                     : 35
+Kan Grubu               : A Rh+
+Boy / Kilo              : 175 cm / 80 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 7/10 (ORTA RİSK)
+Suç Durumu              : AKTİF
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 2
+Suç Geçmişi             : ['Hırsızlık']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🔴 FİRARDA - ACİL ARANMAKTADIR
+==================================================
+
+
+==================================================
+[SUÇLU KAYIT RAPORU] - TC: 23456789012
+==================================================
+Kayıt Tarihi            : 24-12-2025 13:16
+Ad Soyad                : Mehmet Kaya
+Yaş                     : 42
+Kan Grubu               : B Rh+
+Boy / Kilo              : 180 cm / 85 kg
+--------------------------------------------------
+SUÇ BİLGİLERİ
+--------------------------------------------------
+Tehlike Seviyesi        : 5/10 (ORTA RİSK)
+Suç Durumu              : GÖZALTINDA
+Öldürme Sayısı          : 0
+Yaralama Sayısı         : 1
+Suç Geçmişi             : ['Darp']
+Hayatta mı              : EVET
+--------------------------------------------------
+DURUM                   : 🟢 GÖZALTINDA
+==================================================
+

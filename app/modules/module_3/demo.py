@@ -12,34 +12,24 @@ from app.modules.module_3.implementations import (
 )
 
 def main():
-    emergency_service = None
-    human_service = None
-    structure_service = None
-    repository = None
-    units = []
-    people = []
-    structures = []
-    
     print("\n" + "="*60)
     print("🚨 AKILLI ACİL DURUM YÖNETİM SİSTEMİ 🚨")
     print("="*60)
     print("[SİSTEM] Sistem başlatılıyor...")
     time.sleep(1)
-    
-    # Repository oluştur
     repository = EmergencyRepository()
     print("[SİSTEM] Veritabanı bağlantısı başarılı")
-    
-    # Servisleri oluştur
+
     emergency_service = EmergencyService(repository)
     human_service = HumanService(repository)
-    structure_service = StructureService(repository)
-    
+    structure_service = StructureService(repository)       
     print("[SİSTEM] Tüm servisler hazır")
     time.sleep(1)
-    
-    # Örnek veriler oluştur
-    
+
+    units = []
+    people = []
+    structures = []
+
     # Acil durum araçları
     units = [
         AmbulanceUnit(unit_id=101, fuel_level=79, is_enough_staff=True, medical_supply_level=45, is_sterilized=True),
@@ -225,7 +215,7 @@ def main():
                             human = Human(id=tc, name=name, lastname=lastname, age=age, blood_group=blood_group,
                                           height=height, weight=weight, is_alive=True)
 
-                            if human_service.register_human(criminal):
+                            if human_service.register_human(human):
                                 people.append(human)
                                 print(f"\n✅ {name} {lastname} başarıyla kaydedildi!")
 

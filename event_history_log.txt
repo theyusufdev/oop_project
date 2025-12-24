@@ -178,3 +178,30 @@
 [15:57:24] [BİLGİ] Plan oluşturuldu, müdahale başlıyor.
 [15:57:27] ADIM UYGULANDI: 1. [GÜVENLİK] Çevre güvenliğini al, elektrik/gaz akışını kes.
 [15:57:29] ADIM UYGULANDI: 2. [MÜDAHALE] Rüzgarı arkana al, alevin kaynağına su/köpük sık.
+[12:18:10] --- YENİ OPERASYON: Yangın | BİRİM: İtfaiye (ID: 301) ---
+[12:18:12] [BİLGİ] Plan oluşturuldu, müdahale başlıyor.
+[12:18:15] ADIM UYGULANDI: 1. [GÜVENLİK] Çevre güvenliğini al, elektrik/gaz akışını kes.
+[12:18:17] ADIM UYGULANDI: 2. [MÜDAHALE] Rüzgarı arkana al, alevin kaynağına su/köpük sık.
+[12:18:19] ADIM UYGULANDI: 3. [KONTROL] Soğutma çalışması yap ve termal kamerayla kontrol et.
+[12:18:21] [BİLGİ] Operasyon adımları tamamlandı.
+[12:18:23] [SONUÇ RAPORU] Yaralı: 0 | Vefat: 0
+[12:18:23] Birim merkeze dönüyor.
+==================================================
+[12:39:32] --- YENİ OPERASYON: Kimyasal Sızıntı | BİRİM: İtfaiye (ID: 301) ---
+[12:39:34] [BİLGİ] Plan oluşturuldu, müdahale başlıyor.
+[12:39:37] ADIM UYGULANDI: 1. [KARANTİNA] Bölgeyi 500m çapında boşalt. Maskesiz yaklaşma.
+[12:39:39] ADIM UYGULANDI: 2. [KBRN] Koruyucu (sarı) kıyafetleri giy.
+[12:39:41] ADIM UYGULANDI: 3. [İMHA] Sızıntıyı kaynağında tıka veya nötralize et.
+[12:39:43] [BİLGİ] Operasyon adımları tamamlandı.
+[12:39:45] [SONUÇ RAPORU] Herhangi bir yaralanma veya can kaybı yok.
+[12:39:45] Birim merkeze dönüyor.
+==================================================
+[12:50:16] --- YENİ OPERASYON: Yangın | BİRİM: İtfaiye (ID: 301) ---
+[12:50:18] [BİLGİ] Plan oluşturuldu, müdahale başlıyor.
+[12:50:21] ADIM UYGULANDI: 1. [GÜVENLİK] Çevre güvenliğini al, elektrik/gaz akışını kes.
+[12:50:23] ADIM UYGULANDI: 2. [MÜDAHALE] Rüzgarı arkana al, alevin kaynağına su/köpük sık.
+[12:50:25] ADIM UYGULANDI: 3. [KONTROL] Soğutma çalışması yap ve termal kamerayla kontrol et.
+[12:50:27] [BİLGİ] Operasyon adımları tamamlandı.
+[12:50:29] [SONUÇ RAPORU] Yaralı: 0 | Vefat: 2
+[12:50:29] Birim merkeze dönüyor.
+==================================================
